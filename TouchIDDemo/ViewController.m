@@ -64,10 +64,8 @@
     [AuthenticationWithBiometrics evaluateMessage:@"验证一下你的指纹呵" withBlock:^(BOOL isSuccess, NSString *errorInfo) {
         if(isSuccess)
         {
-            
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"成功了" message:errorInfo delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
                 [alert show];
-            
         }
         else
         {
