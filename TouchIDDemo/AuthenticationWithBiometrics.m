@@ -98,7 +98,14 @@
                                             
                                     }
                                     dispatch_async(dispatch_get_main_queue(), ^{
-                                        block(NO, errorInfo);});
+                                        if (error.code == LAErrorTouchIDLockout) {
+                                            [AuthenticationWithBiometrics evaluateMessage:msg withBlock:block];
+                                        }
+                                        else
+                                        {
+                                            block(NO, errorInfo);
+                                        }
+                                    });
                                 }
                                 
                             }];
