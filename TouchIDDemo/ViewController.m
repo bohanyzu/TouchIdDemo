@@ -12,9 +12,13 @@
 
 @interface ViewController ()<TouchIdDelegate>
 
+@property (nonatomic, strong) UILabel *lblIsJailBreak;
+
 @end
 
 @implementation ViewController
+
+@synthesize lblIsJailBreak;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,6 +51,27 @@
     [lblDesp2 setFont:[UIFont systemFontOfSize:11]];
     [lblDesp2 setTextAlignment:NSTextAlignmentCenter];
     [self.view addSubview:lblDesp2];
+    
+    lblIsJailBreak = [[UILabel alloc] initWithFrame:CGRectMake(0, 290, self.view.frame.size.width, 20)];
+    
+    [lblIsJailBreak setFont:[UIFont systemFontOfSize:11]];
+    [lblIsJailBreak setTextAlignment:NSTextAlignmentCenter];
+    [self.view addSubview:lblIsJailBreak];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if ([AuthenticationWithBiometrics isJailBreak]) {
+        [lblIsJailBreak setText:@"该设备己越狱"];
+        [lblIsJailBreak setTextColor:[UIColor redColor]];
+    }
+    else
+    {
+        [lblIsJailBreak setText:@"该设备未越狱"];
+        [lblIsJailBreak setTextColor:[UIColor grayColor]];
+    }
+    
 }
 
 - (void) showVC

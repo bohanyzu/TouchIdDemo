@@ -11,9 +11,14 @@
 
 typedef void (^AuthenticationWithBiometricsBlock)(BOOL isSuccess, NSString *errorInfo);
 
+
+
+
 @interface AuthenticationWithBiometrics : NSObject
 
 +(BOOL) isAuthenticationWithBiometricsEnable;
+
+
 
 /*!
  @method
@@ -25,4 +30,11 @@ typedef void (^AuthenticationWithBiometricsBlock)(BOOL isSuccess, NSString *erro
  */
 + (void)evaluateMessage:(NSString *)msg withBlock:(AuthenticationWithBiometricsBlock)block;
 
+/*!
+ @method
+ @abstract   是否越狱
+ @discussion
+ @result     BOOL
+ */
++ (BOOL)isJailBreak;
 @end
